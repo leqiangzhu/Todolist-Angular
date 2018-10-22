@@ -20,9 +20,9 @@ export class AppComponent {
   ];
    falg: boolean=false;
 
-   selectedTask: Task = this.tasks[0];
-   editTask() {
-    alert("Time to edit a task!");
+   selectedTask: Task = null;
+   editTask(clickedTask) {
+    this.selectedTask = clickedTask;
   }
 
   priorityColor(currentTask){
@@ -34,4 +34,9 @@ export class AppComponent {
       return "bg-info";
     }
   }
+  finishedEditing() {
+    this.selectedTask = null;
+  }
+
+
 }

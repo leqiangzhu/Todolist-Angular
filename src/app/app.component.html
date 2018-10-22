@@ -7,8 +7,9 @@
   </ul>
 
   <ul>
-      <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}  <button (click)="editTask()">Edit!</button></li>
+      <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}} <button (click)="editTask(currentTask)">Edit!</button></li>
     </ul>
+    <div *ngIf="selectedTask">    
     <h3>{{selectedTask.description}}</h3>
     <p>Task Complete? {{selectedTask.done}}</p>
     <h3>Edit Task</h3>
@@ -19,3 +20,5 @@
     <input type="radio" [(ngModel)]="selectedTask.priority" value="1">1 (Low Priority)<br>
     <input type="radio" [(ngModel)]="selectedTask.priority" value="2">2 (Medium Priority)<br>
     <input type="radio" [(ngModel)]="selectedTask.priority" value="3">3 (High Priority)
+    <button (click)="finishedEditing()">Done</button>
+  </div>
