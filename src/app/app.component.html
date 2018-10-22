@@ -1,7 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
-  <h1>To Do List For:  {{month}}/{{day}}/{{year}}</h1>
+  
+<h1>To Do List For:  {{month}}/{{day}}/{{year}}</h1>
   <h3>{{index}}</h3>
-  <ul>
-    <li *ngFor="let index of tasks">{{index.description}}</li>
+  <ul *ngIf="falg">
+    <div *ngFor="let index of tasks">{{index.description}}</div>
   </ul>
 
+  <ul>
+      <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}  <button (click)="editTask()">Edit!</button></li>
+    </ul>
+    <h3>{{selectedTask.description}}</h3>
+    <p>Task Complete? {{selectedTask.done}}</p>
+    <h3>Edit Task</h3>
+    <label>Enter Task Description:</label>
+    <input [(ngModel)]="selectedTask.description">
+    <label>Enter Task Priority (1-3):</label>
+    <br>
+    <input type="radio" [(ngModel)]="selectedTask.priority" value="1">1 (Low Priority)<br>
+    <input type="radio" [(ngModel)]="selectedTask.priority" value="2">2 (Medium Priority)<br>
+    <input type="radio" [(ngModel)]="selectedTask.priority" value="3">3 (High Priority)
